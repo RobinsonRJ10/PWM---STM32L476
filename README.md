@@ -87,11 +87,38 @@ int main(void)
 ```
 
 
-![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/imagenes/MODER.png)
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/MODER.png)
 
 
 ```C
     GPIOD->MODER &= 0xFFFFFFFF;
     GPIOD->MODER &= 0xFEFFFFFF; //(0x2 << 24);
     GPIOD->AFR[1] |= (0x2 << 16);
+```
+
+Ahora se habilitara el relij del TIM4 y guardaremos PSC el valor que se va a cargar en el registro del preescaler activo en cada evento, en ARR el valor que se va a cargar en el registro de recarga automática real, el contador estará bloqueado mientras que el valor de recarga automatica sea nulo, establecemos el ciclo de trabajo en el canal 1.
+
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/APB1ENR1.png)
+
+```C
+    RCC->APB1ENR1 |= 0x00000004; //(1 << 2);
+    // fCK_PSC / (PSC[15:0] + 1)
+    // 84 Mhz / 8399 + 1 = 10 khz timer clock speed
+    TIM4->PSC = 8399;
+    // set period
+    TIM4->ARR = PWMPERIOD;
+    TIM4->CCR1 = 1;
+```
+
+Ahora procedemos a establecer OC1 en modo PWM y habilitamos el canal 1 como salida en el registro de captura/comparacion y OC1 se emite en el pin de salida correspondiente
+
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/OC1.png)
+
+```C
+    TIM4->CCMR1 |= (0x6 << 4);
+    // enable oc1 preload bit 3
+    TIM4->CCMR1 |= (1 << 3);
+    // enable capture/compare ch1 output
+    TIM4->CCER |= (1 << 0);
+
 ```
