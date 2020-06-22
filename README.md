@@ -53,7 +53,7 @@ Con esto se actualizara la bandera de interrupción, este bit lo establece el ha
 
 Los temporizadores de hardware STM32 son bloques de hardware separados que pueden contar desde 0 hasta un valor dado que desencadena algunos eventos intermedios. En el modo PWM, el temporizador controla la salida de 1 o más canales de salida. Cuando el valor del contador alcanza 0, máximo o un valor de comparación definido para cada canal, se puede cambiar el valor de salida del canal. Varias opciones de configuración definen qué eventos cambian el valor y cómo se cambia.
 
-![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/imagenes/pwm.png)
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/pwm.png)
 
 Ahora se establece un ciclo de trabajo.
 
