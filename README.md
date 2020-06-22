@@ -37,9 +37,9 @@ void TIM4_IRQHandler(void)
     static uint16_t duty = 0; //Número entero sin signo de 2 bytes
 ```
 
-![](imagenes/TIM4_DIER.png)
+![TIM4_DIER](imagenes/TIM4_DIER.png)
 
-![](imagenes/TIM4_SR.png)
+![TIM4_SR](imagenes/TIM4_SR.png)
 
 ```C
 // clear interrupt status
