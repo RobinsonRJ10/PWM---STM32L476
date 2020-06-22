@@ -15,7 +15,7 @@ Como primer paso, se incluyen las librerías y las variables que utilizaremos en
 
 Ahora definiremos algunas variables _static_ y borramos el  estado de interrupcion para el tim4 de la siguiente manera:
 
-'' 'C
+`` `C
 /*************************************************
  function declarations
 *************************************************/
@@ -28,6 +28,6 @@ void TIM4_IRQHandler(void)
 {
     static uint32_t t = 0; //Número entero sin signo de 4 bytes
     static uint16_t duty = 0; //Número entero sin signo de 2 bytes
-'' '
+`` `
 
 
