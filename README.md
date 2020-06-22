@@ -79,7 +79,7 @@ int main(void)
     set_sysclk_to_168;
 ```
 
-![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/imagenes/RCC.png)
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/RCC.png)
 
 
 ```C
