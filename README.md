@@ -37,9 +37,9 @@ void TIM4_IRQHandler(void)
     static uint16_t duty = 0; //Número entero sin signo de 2 bytes
 ```
 
-![](imagenes/TIM4_DIER.png)
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/TIM4_DIER.png)
 
-![](imagenes/TIM4_SR.png)
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/TIM4_SR.png)
 
 ```C
 // clear interrupt status
