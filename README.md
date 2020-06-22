@@ -120,5 +120,29 @@ Ahora procedemos a establecer OC1 en modo PWM y habilitamos el canal 1 como sali
     TIM4->CCMR1 |= (1 << 3);
     // enable capture/compare ch1 output
     TIM4->CCER |= (1 << 0);
+```
 
+Por ultimo habilitamos la interrupcion de actualizacion , seleccionamos la prioridad, qur paras este caso sera de nivel 2 y habilitamos el modulo del TIM4 (CEN, bit0), hecho esto el programa estara terminado.
+
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/DIER.png)
+
+```C
+    TIM4->DIER |= (1 << 0);
+    NVIC_SetPriority(TIM4_IRQn, 2); // Priority level 2
+    // enable TIM4 IRQ from NVIC
+    NVIC_EnableIRQ(TIM4_IRQn);
+```
+
+![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/CR1.png)
+
+```C
+    TIM4->CR1 |= (1 << 0);
+
+    while(1)
+    {
+        // Do nothing.
+    }
+
+    return 0;
+}
 ```
