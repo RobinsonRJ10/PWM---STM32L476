@@ -8,9 +8,26 @@ La modulación por ancho o de pulso (en inglés pulse width modulation PWM) es u
 ### Resumen del ejercicio
 El siguiente programa consiste en desvanecer la intensidad luminica de un LED usando la funcionalidad PWM en timmer 4, los LED se encuentran conectados a los pines 12 y 15 del puerto GPIOD, el GPIOD 12 esta conectado al timmer 4 y canal 1.
 
-Como primer paso, se incluyen las librerías y las variables que utilizaremos en el código. La librería math.h es un archivo de la biblioteca de funciones del Lenguaje de programación C  diseñado para operaciones matemáticas básicas sobre valores de tipo double.
+####  Como se hará?
+Como primer paso, se incluyen las librerías y las variables que utilizaremos en el código. La librería _math.h_ es un archivo de la biblioteca de funciones del Lenguaje de programación C  diseñado para operaciones matemáticas básicas sobre valores de tipo double.
 
 ![](imagenes/1.PNG)
 
-Ahora definiremos algunas variables static y borramos el  estado de interrupcion para el tim4 de la siguiente manera:
+Ahora definiremos algunas variables _static_ y borramos el  estado de interrupcion para el tim4 de la siguiente manera:
+
+'' 'C
+/*************************************************
+ function declarations
+*************************************************/
+int main(void);
+
+/*************************************************
+* timer 4 interrupt handler
+*************************************************/
+void TIM4_IRQHandler(void)
+{
+    static uint32_t t = 0; //Número entero sin signo de 4 bytes
+    static uint16_t duty = 0; //Número entero sin signo de 2 bytes
+'' '
+
 
