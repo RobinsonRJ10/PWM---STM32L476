@@ -4,5 +4,4 @@ Se pretende realizar un ejercicio sencillo e ilustrativo para hacer PWM en la ta
 El siguiente programa consiste en desvanecer la intensidad luminica de un LED usando la funcionalidad PWM en timmer 4, los LED se encuentran conectados a los pines 12 y 15 del puerto GPIOD, el GPIOD 12 esta conectado al timmer 4 y canal 1.
 
 Como primer paso, se incluyen las librerías y las variables que utilizaremos en el código. La librería math.h es un archivo de la biblioteca de funciones del Lenguaje de programación C  diseñado para operaciones matemáticas básicas sobre valores de tipo double.
-! [Imagen de Yaktocat]
-(https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/1.PNG)
+![](1.PNG)
