@@ -122,7 +122,7 @@ Ahora procedemos a establecer OC1 en modo PWM y habilitamos el canal 1 como sali
     TIM4->CCER |= (1 << 0);
 ```
 
-Por ultimo habilitamos la interrupcion de actualizacion , seleccionamos la prioridad, qur paras este caso sera de nivel 2 y habilitamos el modulo del TIM4 (CEN, bit0), hecho esto el programa estara terminado.
+Por ultimo habilitamos la interrupcion de actualizacion , seleccionamos la prioridad, que para este caso sera de nivel 2 y habilitamos el modulo del TIM4 (CEN, bit0), hecho esto el programa estara terminado.
 
 ![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/DIER.png)
 
