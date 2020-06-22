@@ -15,14 +15,14 @@ Como primer paso, se incluyen las librerías y las variables que utilizaremos en
 
 Ahora definiremos algunas variables _static_ y borramos el  estado de interrupcion para el tim4 de la siguiente manera:
 
-`` `C
+`` ` C
 /*************************************************
  function declarations
 *************************************************/
 int main(void);
 
 /*************************************************
-* timer 4 interrupt handler
+timer 4 interrupt handler
 *************************************************/
 void TIM4_IRQHandler(void)
 {
