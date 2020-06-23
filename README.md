@@ -6,7 +6,11 @@ Se pretende realizar un ejercicio ilustrativo para hacer PWM en la tarjeta STM32
 La modulación por ancho o de pulso (en inglés pulse width modulation PWM) es un tipo de señal de voltaje utilizada para enviar información o para modificar la cantidad de energía que se envía a una carga. Esta acción tiene en cuenta la modificación del ciclo de trabajo de una señal de tipo periódico, como tener el control de la energía que se proporciona a una carga o llevar a cabo la transmisión de dato.
 
 ### Resumen del ejercicio
-El siguiente programa consiste en desvanecer la intensidad luminica de un LED usando la funcionalidad PWM en timmer 4, los LED se encuentran conectados a los pines 12-15 del puerto GPIOD, el GPIOD 12 esta conectado al timmer 4 y canal 1.
+Para controlar el brillo de un LED, se puede variar la potencia que se envía al LED mediante un potenciómetro (resistencia variable), entonces, mientras más potencia se le suministra al LED, más brillante es, pero si recibe menos potencia el LED se atenua. Los microcontroladores son digitales, lo que significa que solo tienen dos estados, encendido y apagado. PWM nos permitira de alguna manera simular niveles variables de potencia al oscilar la salida del microcontrolador. 
+
+Imaginemos que durante un corto período de tiempo, encendemos el LED al 50% y lo apagamos al 50%, el LED se mostrara la mitad de brillante, es de esta forma que se pretende atenuar o variar la intensidad luminica del LED, se debe tener en cuenta que si encendemos y apagamos el LED demasiado lento, el espectador verá que el LED parpadea, por esta razon la frecuencia de la forma de onda PWM no es importante siempre y cuando esta sea más rápida de lo que el ojo humano puede ver y no demasiado rápida como para que el LED no alcance su voltaje de saturación.
+
+Partiendo de esa introcuccion, se pretende realizar un programa que nos permita atenuar o variar la intensidad luminica de un LED usando la funcionalidad PWM en timmer 4, los LED se encuentran conectados a los pines 12-15 del puerto GPIOD, el GPIOD 12 esta conectado al timmer 4 y canal 1.
 
 ####  Como se hará?
 Como primer paso, se incluyen las librerías y las variables que utilizaremos en el código. La librería _math.h_ es un archivo de la biblioteca de funciones del Lenguaje de programación C  diseñado para operaciones matemáticas básicas sobre valores de tipo double.
@@ -55,7 +59,7 @@ Los temporizadores de hardware STM32 son bloques de hardware separados que puede
 
 ![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/pwm.png)
 
-Ahora se establece un ciclo de trabajo.
+El ciclo de trabajo se refiere a la cantidad total de tiempo que un pulso está "encendido" durante la duración del ciclo, por lo que con un brillo del 50%, el ciclo de trabajo del LED es del 50%.
 
 ```C
 duty =(uint16_t)(PWMPERIOD/2.0 * (sin(2*M_PI*(double)t/(SAMPLE)) + 1.0));
@@ -100,6 +104,7 @@ Ahora se habilitara el relij del TIM4 y guardaremos PSC el valor que se va a car
 
 ![](https://github.com/RobinsonRJ10/PWM---STM32L476/blob/master/Imagenes/APB1ENR1.png)
 
+La precisión con la que controlamos el ciclo de trabajo se conoce como resolución, cuanto mayor sea, más niveles de brillo se podran mostrar.
 ```C
     RCC->APB1ENR1 |= 0x00000004; //(1 << 2);
     // fCK_PSC / (PSC[15:0] + 1)
